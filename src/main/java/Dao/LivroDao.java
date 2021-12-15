@@ -13,18 +13,20 @@ public class LivroDao {
 
     private Connection connection;
 
-    public void livroDao() {
+    public LivroDao() {
         this.connection = new ConectionFactory().getConection();
     }
 
     public void criaTabelaLivros() {
-        String sql = "CREATE TABEL IF NOT EXISTS livros(" +
+        String sql = "CREATE TABLE IF NOT EXISTS livros(" +
                 "idLivro INT PRIMARY KEY AUTO_INCREMENT," +
                 "nomeLivro VARCHAR(50) NOT NULL," +
-                "FOREIGN KEY (idGenero)," +
-                "FOREIGN KEY (idBiblioteca)," +
+                "idGenero INT," +
+                "FOREIGN KEY (idGenero) " +
                 "REFERENCES generos(idGenero),"+
-                "REFERENCES bibliotecas(idBiblioteca),"+
+                "idBiblioteca INT," +
+                "FOREIGN KEY (idBiblioteca) " +
+                "REFERENCES bibliotecas(idBiblioteca)"+
                 ");";
 
         try {

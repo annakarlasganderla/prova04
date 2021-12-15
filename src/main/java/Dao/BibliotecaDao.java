@@ -11,15 +11,15 @@ import java.util.List;
 public class BibliotecaDao {
     private Connection connection;
 
-    public void bibliotecaDao() {
+    public BibliotecaDao() {
         this.connection = new ConectionFactory().getConection();
     }
 
     public void criaTabelaBiblioteca() {
         String sql = "CREATE TABLE IF NOT EXISTS bibliotecas (" +
                 "idBiblioteca INT PRIMARY KEY AUTO_INCREMENT," +
-                "nomeBiblioteca VARCHAR(50) NOT NULL," +
-                ")";
+                "nomeBiblioteca VARCHAR(50) NOT NULL" +
+                ");";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);

@@ -2,7 +2,7 @@ package Dao;
 
 import Factory.ConectionFactory;
 import Model.Genero;
-import Model.Livro;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
 public class GeneroDao {
     private Connection connection;
 
-    public void generoDao() {
+    public GeneroDao() {
         this.connection = new ConectionFactory().getConection();
     }
 
@@ -108,6 +108,7 @@ public class GeneroDao {
             PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setString(1, genero.getNomeGenero());
+            stmt.setInt(2, genero.getIdGenero());
 
             stmt.execute();
         } catch (SQLException e) {

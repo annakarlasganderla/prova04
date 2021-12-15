@@ -10,9 +10,8 @@ public class ConectionFactory {
         try {
             return DriverManager.getConnection("jdbc:mysql://localhost/prova04", "root", "femina123");
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
 }
